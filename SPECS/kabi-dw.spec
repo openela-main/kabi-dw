@@ -1,20 +1,22 @@
-%global commitdate 20200515
-%global commit b52ac13b897e6a6696e2c059f5236f889e667a32
+%global commitdate 20230223
+%global commit eedfcbf9c60feedb532ad3d4d111ca93f7c32a26
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           kabi-dw
 Version:        0
-Release:        0.10.%{commitdate}git%{shortcommit}%{?dist}
+Release:        0.25.%{commitdate}git%{shortcommit}%{?dist}
 Summary:        Detect changes in the ABI between kernel builds
 License:        GPLv3+
 URL:            https://github.com/skozina/%{name}
 Source0:        %{name}-%{shortcommit}.tar.gz
 
 BuildRequires:  elfutils-devel
+BuildRequires:  gcc
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glib2-devel
 BuildRequires:  redhat-rpm-config
+BuildRequires:  make
 
 %description
 The aim of kabi-dw is to detect any changes in the ABI between the successive
@@ -40,6 +42,10 @@ install -m 0755 %{name} %{buildroot}%{_bindir}/
 %license COPYING
 
 %changelog
+* Mon Jul 03 2023 Čestmír Kalina <ckalina@redhat.com> - 0-0.25.20230223giteedfcbf
+- Update to eedfcbf
+- Resolves: rhbz#2213162
+
 * Wed Jun 10 2020 Cestmir Kalina <ckalina@redhat.com> - 0-0.10.20200515gitb52ac13
 - Upload Source0
 - Resolves RHBZ#1778928
